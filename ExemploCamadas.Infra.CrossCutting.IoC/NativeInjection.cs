@@ -1,4 +1,6 @@
-﻿using ExemploCamadas.Infra.Data.ApplicationDbContext;
+﻿using ExemploCamadas.Application.Modules.Cliente.Interfaces.RepositoryInterfaces;
+using ExemploCamadas.Infra.Data.ApplicationDbContext;
+using ExemploCamadas.Infra.Data.Entities.Cliente.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,8 +18,8 @@ public static class NativeInjection
         {
             opt.UseMySql(connectionString, versionServer);
         });
-        
-        
+
+        services.AddScoped<IClienteRepository, ClienteRepository>();
         
         return services;
     }
